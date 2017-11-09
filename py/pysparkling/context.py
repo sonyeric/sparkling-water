@@ -125,7 +125,7 @@ class H2OContext(object):
             # we can infer cloud name from the handle, it is stored in cookie as the name of the argument
             conf.set_cloud_name(params['cookies'][0].split("=")[0])
             # don't use params['ip'] and params['port'] as these are the port and ip of the proxy
-            conf.set_h2o_cluster(params['node_ip'], int(params['node_port']))
+            conf.set_h2o_cluster(external_cluster_handle['node_ip'], int(external_cluster_handle['node_port']))
             conf.use_manual_cluster_start()
 
 
