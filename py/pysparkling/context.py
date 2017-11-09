@@ -114,10 +114,10 @@ class H2OContext(object):
             if conf is None:
                 conf = H2OConf(spark)
             else:
-                if conf.cloud_name() is None:
+                if conf.cloud_name() is not None:
                     warnings.warn("Cloud name value is automatically inferred from the external_cluster_handle and "
                                   "specified value is ignored.")
-                if conf.h2o_cluster_host() is None or conf.h2o_cluster_port() is None:
+                if conf.h2o_cluster_host() is not None or conf.h2o_cluster_port() is not None:
                     warnings.warn("Ip and port of external cluster is automatically inferred from the "
                                   "external_cluster_handle and specified value is ignored.")
 
