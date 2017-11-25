@@ -63,7 +63,8 @@ private[spark] trait H2OContextUtils extends Logging {
 
 
   def withConversionDebugPrints[R <: Frame](sc: SparkContext, conversionName: String, block: => R): R = {
-    val sparkTesting = sc.getConf.getOption("spark.testing").orElse(sys.props.get("spark.testing"))
+    val propName = "spark.h2o.measurements.timing"
+    val sparkTesting = sc.getConf.getOption(propName).orElse(sys.props.get(propName))
 
     if (sparkTesting.nonEmpty && sparkTesting.get.toBoolean) {
       val t0 = System.nanoTime()
